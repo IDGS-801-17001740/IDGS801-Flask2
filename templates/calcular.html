@@ -1,0 +1,14 @@
+{%extends "layout.html"%}
+{%block content%}
+  <div>
+    <h3>Promedio: {{promedio}}</h3>
+    <h3>Número Mayor: {{nMayo}}}</h3>
+    <h3>Número Menor: {{nMenor}}</h3>
+
+    <h3>Números Repetidos</h3>
+    {%from "_macros.html" import repeat_nums%}
+    {%for rep in repetidos%}
+    {{repeat_nums(rep)}}
+    {%endfor%}
+  </div>
+{%endblock%}

@@ -1,58 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App</title>
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-    <style>
-        body {
-            padding-top: 60px;
-        }
+    <title> {{name}} </title>
 
-        .tr-head {
-            background: #dff0d8;
-        }
-    </style>
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.css">
+    <link href="static/style/bootstrap-5.2.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel ="stylesheet" type="text/css" href="static/style/font_awesome_5_15_3/css/all.min.css">
+    <link rel="stylesheet" href="static/style/bootstrap-5.2.2-dist/css/Estilos.css">
 </head>
-
 <body>
-    <div class="navbar navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="">
-                    UTL-IDGS
-                </a>
-                <ul class="nav">
-                    <li>
-                        <a href="">
-                            <i class="icon-home icon-white"></i>
-                            Inicio
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="icon-user icon-white"></i>
-                            Usuarios
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="icon-home icon-white"></i>
-                            Alumnos
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+        <a href="/" class="navbar-brand">INICIO</a>
+        <a href="/cajas_dinamica" class="navbar-brand {{'active' if name == 'Cajas Dinámicas' else ''}}">
+             CAJAS DINÁMICAS</a>
+        <a href="/alumnos" class="navbar-brand {{'active' if name == 'Alumnos' else ''}}">
+            ALUMNOS</a>
+        <a href="/cookie" class="navbar-brand {{'active' if name == 'Cookie' else ''}}">
+            COOKIE</a>
+        <a href="/traductor" class="navbar-brand {{'active' if name == 'Traductor' else ''}}">
+            TRADUCTOR</a>
+        
+        {%with messages = get_flashed_messages()%}
+            {%if messages%}
+                {%for message in messages%}
+                <p class="" style="margin-block-start: 0px; margin-block-end: 0px; padding-right: 3rem; text-transform: uppercase;">{{message}}</p>
+                {%endfor%}
+            {%endif%}
+        {%endwith%}
         </div>
     </div>
-    <div class="container">
-        {%block content %}
-        {%endblock%}
-    </div>
-</body>
 
+    <main class="container-fluid" style="margin-top:70px">
+        {%block content%}
+        {%endblock%}
+    </main>
+
+    <script src="static/style/bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
